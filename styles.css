@@ -1,0 +1,592 @@
+@charset "UTF-8";
+:root {
+  /* Verdes principales */
+  --pg-green-dark: #0f2a1d;
+  --pg-green-mid: #1f4d3a;
+  --pg-green-soft: #3f6f5a;
+  /* Arena / tierra */
+  --pg-sand: #e7e2d6;
+  /* Texto */
+  --pg-text-light: #f5f7f4;
+  --pg-text-muted: #cfd8d3;
+  color: rgb(67, 93, 21);
+}
+
+/* =========================
+   NAVBAR – transparente → glass
+   ========================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent;
+  border-bottom: none;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estado inicial (hero) */
+.navbar-brand,
+.navbar-nav a {
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav a:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* =========================
+   ESTADO SCROLL (glass blanco)
+   ========================= */
+.navbar.navbar--scrolled {
+  background: rgba(255, 255, 255, 0.75); /* blanco translúcido */
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.navbar.navbar--scrolled .navbar-brand,
+.navbar.navbar--scrolled .navbar-nav a {
+  color: #1e293b; /* texto oscuro */
+}
+
+.navbar.navbar--scrolled .navbar-nav a:hover {
+  color: #0f1f17;
+}
+
+/* =========================
+   NAVBAR MOBILE MENU
+   ========================= */
+/* Botón hamburguesa */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: currentColor;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: block;
+  }
+  .navbar-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  /* estado abierto */
+  .navbar.navbar--open .navbar-nav {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  /* Links en mobile */
+  .navbar-nav a {
+    font-size: 1.2rem;
+    color: #1e293b;
+  }
+}
+.hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-image: url("../img/plantas.png");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  background-repeat: no-repeat;
+}
+
+/*.hero-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(253, 243, 234, 0) 0%,
+    #fdf3ea 85%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+*/
+.hero-content {
+  position: relative;
+  padding-bottom: 4rem;
+  z-index: 2;
+}
+
+.hero h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(3.6rem, 5vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  max-width: 420px;
+  opacity: 0.9;
+}
+
+.section-servicios .section-header {
+  max-width: 769px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.section-servicios .section-title {
+  padding-top: 2rem;
+  font-size: 2rem;
+}
+
+/* ✅ MOBILE: título en 1 línea */
+@media (max-width: 768px) {
+  .section-servicios .section-title {
+    font-size: 1.35rem;
+    line-height: 1.1;
+  }
+  .section-servicios .section-header {
+    margin-bottom: 1.5rem;
+  }
+}
+/* ✅ DESKTOP: header centrado, título grande, span a la izquierda */
+@media (min-width: 769px) {
+  .section-servicios .section-header {
+    max-width: 1100px;
+    margin-top: 2rem;
+    text-align: center;
+    position: relative; /* para ubicar el span */
+  }
+  .section-servicios .section-title {
+    font-size: clamp(2.6rem, 3.2vw, 3.4rem);
+    line-height: 1.08;
+  }
+  /* ✅ Span a la izquierda */
+  .section-servicios .section-eyebrow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: left;
+  }
+}
+/* =========================
+   GRID / CARDS
+   ========================= */
+/* ✅ Desktop: 4 columnas */
+.section-servicios .grid.grid-3 {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: stretch;
+}
+
+/* ✅ Tablet: 2 columnas */
+@media (max-width: 1024px) {
+  .section-servicios .grid.grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* Card */
+.section-servicios .card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  /* ✅ más alta en todos lados */
+  min-height: clamp(32rem, 38vw, 44rem);
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+/* ✅ Imagen MUCHO más alta */
+.section-servicios .card img {
+  width: 100%;
+  aspect-ratio: 3/4; /* más vertical */
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+
+/* Padding del texto */
+.section-servicios .card h3,
+.section-servicios .card p {
+  padding-inline: 1.25rem;
+}
+
+.section-servicios .card h3 {
+  margin: 0.9rem 0 0;
+}
+
+.section-servicios .card p {
+  margin: 0;
+  padding-bottom: 1.25rem;
+  margin-top: auto;
+}
+
+/* Hover */
+.section-servicios .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+}
+
+/* =========================
+   MOBILE: carrusel swipe
+   ========================= */
+@media (max-width: 768px) {
+  .section-servicios .grid.grid-3 {
+    display: flex !important;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-inline: 1rem;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+  }
+  .section-servicios .grid.grid-3::-webkit-scrollbar {
+    display: none;
+  }
+  .section-servicios .grid.grid-3 > .card {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+  }
+}
+/* =========================
+   FOOTER (premium, minimal)
+   ========================= */
+.footer.footer--minimal {
+  background: #0f1f17;
+  color: #e9dcc7;
+  padding: 3.5rem 0;
+  border-top: 1px solid rgba(233, 220, 199, 0.16);
+}
+
+.footer.footer--minimal .footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 4rem;
+}
+
+/* Marca */
+.footer.footer--minimal .footer-brand {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1.25rem;
+  align-items: start;
+  max-width: 560px;
+}
+
+/* Logo limpio, mismo peso que el texto */
+.footer.footer--minimal .footer-logo-img {
+  width: 5rem; /* clave: similar a altura del texto */
+  height: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Títulos */
+.footer.footer--minimal .footer-title {
+  margin: 0 0 0.6rem;
+  color: #f2e6d3;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Texto */
+.footer.footer--minimal .text-muted {
+  color: rgba(233, 220, 199, 0.75);
+}
+
+.footer.footer--minimal p {
+  margin: 0.35rem 0;
+  line-height: 1.6;
+}
+
+/* Contacto */
+.footer.footer--minimal .footer-contact {
+  min-width: 260px;
+}
+
+.footer.footer--minimal .footer-copy {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(233, 220, 199, 0.12);
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer.footer--minimal {
+    padding: 3rem 0;
+  }
+  .footer.footer--minimal .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .footer.footer--minimal .footer-brand {
+    max-width: 100%;
+  }
+  .footer.footer--minimal .footer-contact {
+    min-width: unset;
+  }
+}
+body {
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: sans-serif;
+  font-weight: 500;
+}
+
+.section-contacto {
+  background-image: url(../img/contact.png);
+  min-height: 110vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contacto-fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30vh;
+  background: linear-gradient(to bottom, rgba(253, 243, 234, 0) 0%, #fdf3ea 85%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.section-contacto h2 {
+  font-size: 4rem;
+}
+
+.section-contacto .btn.btn-primary {
+  background-color: #2f4f3a; /* mismo verde que los íconos */
+  color: #ffffff;
+  border-color: #2f4f3a;
+  text-decoration: none;
+}
+
+.section-contacto .btn.btn-primary:hover {
+  background-color: #244030; /* verde un poco más oscuro */
+  border-color: #244030;
+}
+
+.section-contacto {
+  position: relative;
+  background-color: #fdf3ea;
+  padding: 8rem 0;
+  overflow: hidden;
+}
+
+.section-fade-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgb(253, 243, 234) 0%, rgba(253, 243, 234, 0) 100%);
+}
+
+.section-contacto .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* CTA / CONTACTO - ajustes mobile */
+@media (max-width: 768px) {
+  .section-contacto {
+    min-height: 100vh; /* si querés que sea pantalla completa */
+    padding-block: 3rem; /* aire arriba/abajo */
+    background-position: center;
+  }
+  .section-contacto h2 {
+    font-size: clamp(2rem, 7vw, 2.6rem);
+    line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+  .section-contacto p {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 32ch;
+    margin-inline: auto;
+    margin-bottom: 1.25rem;
+  }
+  .section-contacto .btn {
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
+  }
+}
+/* =========================
+   PROCESO
+   ========================= */
+.section-proceso {
+  /* mobile: que ocupe toda la pantalla */
+  min-height: 100vh;
+  display: flex;
+  align-items: center; /* centra vertical */
+}
+
+/* Título */
+.section-proceso h2 {
+  font-size: 3rem;
+  margin-top: 1rem;
+}
+
+/* ✅ Grid: desktop 3 columnas */
+.section-proceso .grid.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  align-items: stretch;
+}
+
+/* Card */
+.section-proceso .process-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  /* ✅ clamp correcto */
+  min-height: clamp(22rem, 24vw, 30rem);
+  padding: 2rem;
+}
+
+/* Icono: NO lo hagas 18rem, es enorme */
+.section-proceso .process-icon svg {
+  width: 90px;
+  height: 90px;
+  color: #2f4f3a;
+}
+
+/* Tipografía */
+.section-proceso .process-card h3 {
+  margin: 0.25rem 0 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.section-proceso .process-card p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  padding-bottom: 1.25rem;
+}
+
+/* ✅ MOBILE: 3 cards en columna + sigue ocupando 100vh */
+@media (max-width: 768px) {
+  .section-proceso {
+    min-height: 100vh; /* full screen */
+    padding-block: 2rem; /* aire para que no se corte */
+  }
+  .section-proceso h2 {
+    font-size: 2rem;
+    margin: 2rem;
+  }
+  .section-proceso .grid.grid-3 {
+    grid-template-columns: 1fr; /* columna */
+    gap: 0.5rem;
+  }
+  .section-proceso .process-card {
+    min-height: auto; /* mejor en mobile */
+    padding: 1.5rem;
+  }
+  .section-proceso .process-icon svg {
+    width: 72px;
+    height: 72px;
+  }
+}
+/* =========================
+   BOTÓN WHATSAPP STICKY
+   ========================= */
+.wa-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.9rem 1.05rem;
+  border-radius: 999px;
+  background: #2f6b4f; /* verde natural, acorde a la marca */
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+  transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+}
+
+.wa-float:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+/* Ícono WhatsApp */
+.wa-float__icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: block;
+  color: #ffffff;
+}
+
+/* Texto */
+.wa-float__text {
+  letter-spacing: 0.2px;
+}
+
+/* MOBILE: solo ícono */
+@media (max-width: 768px) {
+  .wa-float {
+    padding: 0.9rem;
+  }
+  .wa-float__text {
+    display: none;
+  }
+}
+body {
+  background-color: #fdf3ea;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px), radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 4px 4px, 6px 6px;
+  background-position: 0 0, 2px 2px;
+}
+
+/*# sourceMappingURL=styles.css.map */
