@@ -1,0 +1,145 @@
+.section-servicios .section-header {
+  max-width: 769px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.section-servicios .section-title {
+  padding-top: 2rem;
+  font-size: 2rem;
+}
+
+/* ✅ MOBILE: título en 1 línea */
+@media (max-width: 768px) {
+  .section-servicios .section-title {
+    font-size: 1.35rem;
+    line-height: 1.1;
+  }
+
+  .section-servicios .section-header {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* ✅ DESKTOP: header centrado, título grande, span a la izquierda */
+@media (min-width: 769px) {
+  .section-servicios .section-header {
+    max-width: 1100px;
+    margin-top: 2rem;
+    text-align: center;
+    position: relative; /* para ubicar el span */
+  }
+
+  .section-servicios .section-title {
+    font-size: clamp(2.6rem, 3.2vw, 3.4rem);
+    line-height: 1.08;
+  }
+
+  /* ✅ Span a la izquierda */
+  .section-servicios .section-eyebrow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: left;
+  }
+}
+
+/* =========================
+   GRID / CARDS
+   ========================= */
+
+/* ✅ Desktop: 4 columnas */
+.section-servicios .grid.grid-3 {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: stretch;
+}
+
+/* ✅ Tablet: 2 columnas */
+@media (max-width: 1024px) {
+  .section-servicios .grid.grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Card */
+.section-servicios .card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  padding: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+
+  /* ✅ más alta en todos lados */
+  min-height: clamp(32rem, 38vw, 44rem);
+
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+/* ✅ Imagen MUCHO más alta */
+.section-servicios .card img {
+  width: 100%;
+  aspect-ratio: 3 / 4; /* más vertical */
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+
+/* Padding del texto */
+.section-servicios .card h3,
+.section-servicios .card p {
+  padding-inline: 1.25rem;
+}
+
+.section-servicios .card h3 {
+  margin: 0.9rem 0 0;
+}
+
+.section-servicios .card p {
+  margin: 0;
+  padding-bottom: 1.25rem;
+  margin-top: auto;
+}
+
+/* Hover */
+.section-servicios .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+}
+
+/* =========================
+   MOBILE: carrusel swipe
+   ========================= */
+@media (max-width: 768px) {
+  .section-servicios .grid.grid-3 {
+    display: flex !important;
+    gap: 1rem;
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    padding-inline: 1rem;
+    padding-bottom: 0.5rem;
+
+    scrollbar-width: none;
+  }
+
+  .section-servicios .grid.grid-3::-webkit-scrollbar {
+    display: none;
+  }
+
+  .section-servicios .grid.grid-3 > .card {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+  }
+}

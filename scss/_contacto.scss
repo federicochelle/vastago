@@ -1,0 +1,94 @@
+.section-contacto {
+  background-image: url(../img/contact.png);
+  min-height: 110vh; // desktop
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contacto-fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(253, 243, 234, 0) 0%,
+    #fdf3ea 85%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+.section-contacto h2 {
+  font-size: 4rem;
+}
+
+.section-contacto .btn.btn-primary {
+  background-color: #2f4f3a; /* mismo verde que los íconos */
+  color: #ffffff;
+  border-color: #2f4f3a;
+  text-decoration: none;
+}
+
+.section-contacto .btn.btn-primary:hover {
+  background-color: #244030; /* verde un poco más oscuro */
+  border-color: #244030;
+}
+
+.section-contacto {
+  position: relative;
+  background-color: #fdf3ea; // mismo fondo del body
+  padding: 8rem 0;
+  overflow: hidden;
+}
+
+.section-fade-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  z-index: 1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(253, 243, 234, 1) 0%,
+    rgba(253, 243, 234, 0) 100%
+  );
+}
+
+.section-contacto .container {
+  position: relative;
+  z-index: 2;
+}
+/* CTA / CONTACTO - ajustes mobile */
+@media (max-width: 768px) {
+  .section-contacto {
+    min-height: 100vh; /* si querés que sea pantalla completa */
+    padding-block: 3rem; /* aire arriba/abajo */
+    background-position: center;
+  }
+
+  .section-contacto h2 {
+    font-size: clamp(2rem, 7vw, 2.6rem);
+    line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+
+  .section-contacto p {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 32ch;
+    margin-inline: auto;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-contacto .btn {
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
+  }
+}

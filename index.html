@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Paisajismo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS principal de tu librería -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="container navbar-content">
+        <div class="navbar-brand">VASTAGO</div>
+
+        <nav class="navbar-nav">
+          <a href="#servicios">Servicios</a>
+          <a href="#proceso">Proceso</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+
+        <button class="navbar-toggle" aria-label="Abrir menú">☰</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+  <div class="hero-fade"></div>
+
+  <div class="hero-content container">
+    <h2>
+      DISEÑO<br />
+      ARMONIA<br />
+      NATURALEZA
+    </h2>
+  </div>
+</section>
+      <section id="servicios" class="section-servicios">
+  <div class="container">
+
+    <!-- Header de sección -->
+    <div class="section-header">
+      <span class="section-eyebrow">SERVICIOS</span>
+      <h2 class="section-title">
+       NUESTRAS SOLUCIONES PARA TU ESPACIO
+      </h2>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-3">
+      <div class="card">
+        <img src="img/casa.png" alt="" />
+        <h3>DISEÑO</h3>
+        <p class="text-muted">
+          Diseñamos espacios verdes que dialogan con la arquitectura, el entorno y la forma de habitar cada lugar.
+        </p>
+      </div>
+
+      <div class="card">
+        <img src="img/oficina.png" alt="" />
+        <h3>SELECCION</h3>
+        <p class="text-muted">
+          Elegimos especies segun luz, clima y uso del espacio, priorizando equilibrio, resistencia y bajo mantenimiento.
+        </p>
+      </div>
+
+      <!-- Card extra (placeholder) -->
+      <div class="card">
+        <img src="img/azotea.png" alt="" />
+        <h3>INTEGRACION </h3>
+        <p class="text-muted">
+          Integramos vegetacion en proyectos arquitectonicos para mejorar la experiencia, el confort y la identidad del espacio.
+        </p>
+      </div>
+
+      <div class="card">
+        <img src="img/mantenimiento.png" alt="" />
+        <h3>MANTENIMIENTO </h3>
+        <p class="text-muted">
+          Acompañamos el crecimiento del jardin con tareas de cuidado, poda, riego y seguimiento estacional.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+      <!-- PROCESO / INFO -->
+      <section id="proceso" class="section section-proceso">
+        <div class="container">
+          <h2 class="text-center">NUESTRO PROCESO</h2>
+<div class="grid grid-3">
+            <!-- Card 1 -->
+            <div class="process-card">
+              <div class="process-icon" aria-hidden="true">
+                <!-- Visita / evaluación -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 22s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <h3>Visita y evaluación</h3>
+              <p class="text-muted">
+                Analizamos el espacio, la luz, el uso y las necesidades.
+              </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="process-card">
+              <div class="process-icon" aria-hidden="true">
+                <!-- Diseño / presupuesto -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M7 3h7l3 3v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path d="M14 3v3h3" stroke="currentColor" stroke-width="2" />
+                  <path
+                    d="M8 11h8M8 15h8M8 19h5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Diseño y presupuesto</h3>
+              <p class="text-muted">
+                Propuesta clara con materiales, tiempos y costos.
+              </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="process-card">
+              <div class="process-icon" aria-hidden="true">
+                <!-- Ejecución / seguimiento -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M20 6 9 17l-5-5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M21 12a9 9 0 1 1-6-8.5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Ejecución y seguimiento</h3>
+              <p class="text-muted">
+                Implementamos y acompañamos el mantenimiento inicial.
+              </p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- CTA / CONTACTO -->
+     <section id="contacto" class="section section-contacto">
+  <div class="section-fade-top"></div>
+
+  <div class="container text-center">
+    <h2>¿Tenés un espacio que <br>transformar?</h2>
+    <p class="text-muted">
+      Escribinos y coordinamos una visita sin compromiso.
+    </p>
+
+    <a
+  href="https://wa.me/59899888816?text=Hola%20quiero%20coordinar%20una%20visita%20para%20mi%20espacio"
+  class="btn btn-primary"
+  target="_blank"
+  rel="noopener"
+>
+  Hablemos!
+</a>
+  </div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+   <footer class="footer footer--minimal">
+  <div class="container footer-content">
+    <div class="footer-brand">
+      <img class="footer-logo-img" src="./img/logo.svg" alt="vastago PAISAJE">
+      <div>
+        <p class="footer-title">Vástago Paisaje</p>
+        <p class="text-muted">
+          Estudio de diseño de paisaje. Integramos naturaleza y arquitectura en cada escala.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-contact">
+      <p class="footer-title">Contacto</p>
+      <p class="text-muted">hola@vastagopaisaje.com</p>
+      <p class="text-muted">@vastago.paisaje</p>
+      <p class="text-muted">Montevideo, Uruguay</p>
+    </div>
+  </div>
+
+  <p class="footer-copy text-muted">© 2026 Todos los derecho reservados.</p>
+
+</footer>
+
+<a
+  class="wa-float"
+  href="https://wa.me/59899888816?text=Hola%2C%20quiero%20coordinar%20una%20visita."
+  target="_blank"
+  rel="noopener"
+  aria-label="Chatear por WhatsApp"
+  title="Chatear por WhatsApp"
+>
+  <svg
+    class="wa-float__icon"
+    viewBox="0 0 32 32"
+    aria-hidden="true"
+  >
+    <path
+      fill="currentColor"
+      d="M19.11 17.205c-.293-.146-1.733-.855-2.002-.95-.27-.098-.467-.146-.664.147-.197.293-.765.95-.94 1.146-.173.197-.347.22-.64.073-.293-.146-1.236-.455-2.354-1.45-.87-.776-1.46-1.735-1.632-2.028-.173-.293-.018-.45.13-.597.134-.133.293-.347.44-.52.146-.173.197-.293.293-.487.098-.197.05-.366-.024-.513-.073-.147-.664-1.61-.91-2.205-.24-.58-.487-.5-.664-.51l-.567-.01c-.197 0-.513.073-.78.366-.27.293-1.025 1.002-1.025 2.445 0 1.44 1.05 2.834 1.196 3.03.146.197 2.066 3.154 5.006 4.417.7.303 1.247.484 1.674.62.703.223 1.343.192 1.85.117.565-.084 1.733-.708 1.98-1.392.244-.684.244-1.27.17-1.392-.073-.123-.27-.197-.563-.343M16.003 3C9.374 3 4 8.373 4 15c0 2.313.664 4.47 1.817 6.29L4 29l7.93-1.786A11.95 11.95 0 0 0 16.003 27c6.627 0 12-5.373 12-12s-5.373-12-12-12"
+    />
+  </svg>
+
+  <span class="wa-float__text">WhatsApp</span>
+</a>
+<script src="js/navbar.js"></script>
+  </body>
+</html>

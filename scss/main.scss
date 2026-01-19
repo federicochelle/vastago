@@ -1,0 +1,22 @@
+@use "theme";
+@use "navbar";
+@use "hero";
+@use "sections";
+@use "footer";
+@use "typography";
+@use "contacto";
+@use "proceso";
+@use "sticky";
+
+body {
+  background-color: #fdf3ea;
+  background-image:
+    radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size:
+    4px 4px,
+    6px 6px;
+  background-position:
+    0 0,
+    2px 2px;
+}

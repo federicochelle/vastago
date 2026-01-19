@@ -1,0 +1,83 @@
+/* =========================
+   FOOTER (premium, minimal)
+   ========================= */
+
+.footer.footer--minimal {
+  background: #0f1f17;
+  color: #e9dcc7;
+  padding: 3.5rem 0;
+  border-top: 1px solid rgba(233, 220, 199, 0.16);
+}
+
+.footer.footer--minimal .footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 4rem;
+}
+/* Marca */
+.footer.footer--minimal .footer-brand {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1.25rem;
+  align-items: start;
+  max-width: 560px;
+}
+
+/* Logo limpio, mismo peso que el texto */
+.footer.footer--minimal .footer-logo-img {
+  width: 5rem; /* clave: similar a altura del texto */
+  height: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Títulos */
+.footer.footer--minimal .footer-title {
+  margin: 0 0 0.6rem;
+  color: #f2e6d3;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Texto */
+.footer.footer--minimal .text-muted {
+  color: rgba(233, 220, 199, 0.75);
+}
+
+.footer.footer--minimal p {
+  margin: 0.35rem 0;
+  line-height: 1.6;
+}
+
+/* Contacto */
+.footer.footer--minimal .footer-contact {
+  min-width: 260px;
+}
+
+.footer.footer--minimal .footer-copy {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(233, 220, 199, 0.12);
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer.footer--minimal {
+    padding: 3rem 0;
+  }
+
+  .footer.footer--minimal .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .footer.footer--minimal .footer-brand {
+    max-width: 100%;
+  }
+
+  .footer.footer--minimal .footer-contact {
+    min-width: unset;
+  }
+}

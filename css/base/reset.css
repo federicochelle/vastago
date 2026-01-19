@@ -1,0 +1,46 @@
+/* Box model consistente */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Eliminar márgenes y paddings por defecto */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Altura base del documento */
+html, body {
+  height: 100%;
+}
+
+/* Ajustes tipográficos básicos */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Medios responsivos por defecto */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Formularios heredan la tipografía */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Prevenir scroll horizontal accidental */
+body {
+  overflow-x: hidden;
+}

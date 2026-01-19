@@ -1,0 +1,88 @@
+/* =========================
+   PROCESO
+   ========================= */
+
+.section-proceso {
+  /* mobile: que ocupe toda la pantalla */
+  min-height: 100vh;
+  display: flex;
+  align-items: center; /* centra vertical */
+}
+
+/* Título */
+.section-proceso h2 {
+  font-size: 3rem;
+  margin-top: 1rem;
+}
+
+/* ✅ Grid: desktop 3 columnas */
+.section-proceso .grid.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  align-items: stretch;
+}
+
+/* Card */
+.section-proceso .process-card {
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+
+  /* ✅ clamp correcto */
+  min-height: clamp(22rem, 24vw, 30rem);
+
+  padding: 2rem;
+}
+
+/* Icono: NO lo hagas 18rem, es enorme */
+.section-proceso .process-icon svg {
+  width: 90px;
+  height: 90px;
+  color: #2f4f3a;
+}
+
+/* Tipografía */
+.section-proceso .process-card h3 {
+  margin: 0.25rem 0 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.section-proceso .process-card p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  padding-bottom: 1.25rem;
+}
+
+/* ✅ MOBILE: 3 cards en columna + sigue ocupando 100vh */
+@media (max-width: 768px) {
+  .section-proceso {
+    min-height: 100vh; /* full screen */
+    padding-block: 2rem; /* aire para que no se corte */
+  }
+
+  .section-proceso h2 {
+    font-size: 2rem;
+    margin: 2rem;
+  }
+
+  .section-proceso .grid.grid-3 {
+    grid-template-columns: 1fr; /* columna */
+    gap: 0.5rem;
+  }
+
+  .section-proceso .process-card {
+    min-height: auto; /* mejor en mobile */
+    padding: 1.5rem;
+  }
+
+  .section-proceso .process-icon svg {
+    width: 72px;
+    height: 72px;
+  }
+}
