@@ -23,64 +23,97 @@
   z-index: 1000;
   background: transparent;
   border-bottom: none;
-  transition: background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Estado inicial (hero) */
-.navbar-brand,
-.navbar-nav a {
+  /* color base (hereda logo + toggle) */
   color: #ffffff;
-  transition: color 0.3s ease;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  /* =========================
+     CONTENIDO
+     ========================= */
 }
-
-.navbar-nav a:hover {
-  color: rgba(255, 255, 255, 0.85);
+.navbar .navbar-content {
+  display: flex;
+  align-items: center; /* ✅ corrige hamburguesa abajo */
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
 }
-
-/* =========================
-   ESTADO SCROLL (glass blanco)
-   ========================= */
-.navbar.navbar--scrolled {
-  background: rgba(255, 255, 255, 0.75); /* blanco translúcido */
-  backdrop-filter: blur(8px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+.navbar {
+  /* =========================
+     BRAND
+     ========================= */
 }
-
-.navbar.navbar--scrolled .navbar-brand,
-.navbar.navbar--scrolled .navbar-nav a {
-  color: #1e293b; /* texto oscuro */
+.navbar .navbar-brand {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: currentColor; /* hereda blanco / oscuro */
 }
-
-.navbar.navbar--scrolled .navbar-nav a:hover {
-  color: #0f1f17;
+.navbar {
+  /* =========================
+     NAV LINKS (desktop)
+     ========================= */
 }
-
-/* =========================
-   NAVBAR MOBILE MENU
-   ========================= */
-/* Botón hamburguesa */
-.navbar-toggle {
+.navbar .navbar-nav {
+  display: flex;
+  gap: 2rem;
+}
+.navbar .navbar-nav a {
+  color: currentColor;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: opacity 0.2s ease;
+}
+.navbar .navbar-nav a:hover {
+  opacity: 0.85;
+}
+.navbar {
+  /* =========================
+     TOGGLE
+     ========================= */
+}
+.navbar .navbar-toggle {
   display: none;
   background: none;
   border: none;
   font-size: 1.6rem;
   cursor: pointer;
-  color: currentColor;
+  color: currentColor; /* 🔥 clave */
 }
-
-/* MOBILE */
+.navbar {
+  /* =========================
+     ESTADO SCROLL (glass)
+     ========================= */
+}
+.navbar.navbar--scrolled {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  color: #1e293b; /* cambia TODO */
+}
+.navbar {
+  /* =========================
+     MOBILE
+     ========================= */
+}
 @media (max-width: 768px) {
-  .navbar-toggle {
+  .navbar .navbar-toggle {
     display: block;
   }
-  .navbar-nav {
+  .navbar .navbar {
+    padding-inline: 1.25rem;
+  }
+  .navbar .navbar-brand {
+    font-size: 1.1rem;
+  }
+  .navbar .navbar-toggle {
+    padding: 0.5rem;
+  }
+  .navbar .navbar-nav {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
-    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
@@ -90,23 +123,25 @@
     transform: translateY(-10px);
     transition: opacity 0.25s ease, transform 0.25s ease;
   }
-  /* estado abierto */
+  .navbar .navbar-nav a {
+    color: #1e293b;
+    font-size: 1.2rem;
+  }
+  .navbar {
+    /* menú abierto */
+  }
   .navbar.navbar--open .navbar-nav {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
   }
-  /* Links en mobile */
-  .navbar-nav a {
-    font-size: 1.2rem;
-    color: #1e293b;
-  }
 }
+
 .hero {
   position: relative;
   min-height: 100vh;
   width: 100%;
-  background-image: url("../img/plantas.png");
+  background-image: url("img/plantas.png");
   background-size: cover;
   background-position: center;
   color: white;
@@ -220,7 +255,6 @@
   min-height: clamp(32rem, 38vw, 44rem);
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
@@ -252,7 +286,6 @@
 /* Hover */
 .section-servicios .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
 }
 
 /* =========================
@@ -369,7 +402,7 @@ h3 {
 }
 
 .section-contacto {
-  background-image: url(../img/contact.png);
+  background-image: url(img/contact.png);
   min-height: 110vh;
   width: 100%;
   background-size: cover;
@@ -457,24 +490,30 @@ h3 {
    PROCESO
    ========================= */
 .section-proceso {
-  /* mobile: que ocupe toda la pantalla */
   min-height: 100vh;
   display: flex;
-  align-items: center; /* centra vertical */
+  align-items: center;
+  padding: 4rem 0;
+}
+
+/* Contenido interno (clave para control) */
+.section-proceso .container {
+  width: 100%;
 }
 
 /* Título */
 .section-proceso h2 {
   font-size: 3rem;
-  margin-top: 1rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  letter-spacing: 0.05em;
 }
 
-/* ✅ Grid: desktop 3 columnas */
+/* Grid desktop */
 .section-proceso .grid.grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  align-items: stretch;
 }
 
 /* Card */
@@ -484,21 +523,35 @@ h3 {
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;
-  /* ✅ clamp correcto */
-  min-height: clamp(22rem, 24vw, 30rem);
   padding: 2rem;
+  min-height: clamp(22rem, 24vw, 30rem);
 }
 
-/* Icono: NO lo hagas 18rem, es enorme */
+/* Icono */
 .section-proceso .process-icon svg {
   width: 90px;
   height: 90px;
   color: #2f4f3a;
 }
 
+/* =========================
+   ANIMACIÓN PROCESO
+   ========================= */
+.process-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* cuando entra en viewport */
+.process-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Tipografía */
 .section-proceso .process-card h3 {
-  margin: 0.25rem 0 0;
+  margin: 0.5rem 0 0;
   font-size: 1.15rem;
   font-weight: 600;
 }
@@ -507,26 +560,31 @@ h3 {
   margin: 0;
   font-size: 1rem;
   line-height: 1.6;
-  padding-bottom: 1.25rem;
 }
 
-/* ✅ MOBILE: 3 cards en columna + sigue ocupando 100vh */
+/* =========================
+   MOBILE FIX REAL
+   ========================= */
 @media (max-width: 768px) {
   .section-proceso {
-    min-height: 100vh; /* full screen */
-    padding-block: 2rem; /* aire para que no se corte */
+    min-height: auto; /* ❌ NO full height en mobile */
+    align-items: flex-start; /* ❌ NO centrar vertical */
+    padding: 5rem 0 3rem; /* aire debajo de navbar */
   }
   .section-proceso h2 {
-    font-size: 2rem;
-    margin: 2rem;
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    max-width: 90%;
+    margin-inline: auto;
   }
   .section-proceso .grid.grid-3 {
-    grid-template-columns: 1fr; /* columna */
-    gap: 0.5rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   .section-proceso .process-card {
-    min-height: auto; /* mejor en mobile */
-    padding: 1.5rem;
+    min-height: auto;
+    padding: 1.5rem 1.25rem;
   }
   .section-proceso .process-icon svg {
     width: 72px;
@@ -587,6 +645,37 @@ body {
   background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px), radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
   background-size: 4px 4px, 6px 6px;
   background-position: 0 0, 2px 2px;
+}
+
+.animate-from-left,
+.animate-from-right,
+.card,
+.process-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.animate-from-left {
+  transform: translateX(-40px);
+}
+
+.animate-from-right {
+  transform: translateX(40px);
+}
+
+.is-visible {
+  opacity: 1;
+  transform: translate(0);
+}
+
+@media (max-width: 768px) {
+  .animate-from-left {
+    transform: translateY(20px);
+  }
+  .animate-from-right {
+    transform: translateY(20px);
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

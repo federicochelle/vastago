@@ -3,24 +3,30 @@
    ========================= */
 
 .section-proceso {
-  /* mobile: que ocupe toda la pantalla */
   min-height: 100vh;
   display: flex;
-  align-items: center; /* centra vertical */
+  align-items: center;
+  padding: 4rem 0;
+}
+
+/* Contenido interno (clave para control) */
+.section-proceso .container {
+  width: 100%;
 }
 
 /* Título */
 .section-proceso h2 {
   font-size: 3rem;
-  margin-top: 1rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  letter-spacing: 0.05em;
 }
 
-/* ✅ Grid: desktop 3 columnas */
+/* Grid desktop */
 .section-proceso .grid.grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  align-items: stretch;
 }
 
 /* Card */
@@ -30,24 +36,40 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 0.75rem;
-
-  /* ✅ clamp correcto */
-  min-height: clamp(22rem, 24vw, 30rem);
-
   padding: 2rem;
+
+  min-height: clamp(22rem, 24vw, 30rem);
 }
 
-/* Icono: NO lo hagas 18rem, es enorme */
+/* Icono */
 .section-proceso .process-icon svg {
   width: 90px;
   height: 90px;
   color: #2f4f3a;
 }
+/* =========================
+   ANIMACIÓN PROCESO
+   ========================= */
+
+.process-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+/* cuando entra en viewport */
+.process-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Tipografía */
 .section-proceso .process-card h3 {
-  margin: 0.25rem 0 0;
+  margin: 0.5rem 0 0;
   font-size: 1.15rem;
   font-weight: 600;
 }
@@ -56,29 +78,35 @@
   margin: 0;
   font-size: 1rem;
   line-height: 1.6;
-  padding-bottom: 1.25rem;
 }
 
-/* ✅ MOBILE: 3 cards en columna + sigue ocupando 100vh */
+/* =========================
+   MOBILE FIX REAL
+   ========================= */
+
 @media (max-width: 768px) {
   .section-proceso {
-    min-height: 100vh; /* full screen */
-    padding-block: 2rem; /* aire para que no se corte */
+    min-height: auto; /* ❌ NO full height en mobile */
+    align-items: flex-start; /* ❌ NO centrar vertical */
+    padding: 5rem 0 3rem; /* aire debajo de navbar */
   }
 
   .section-proceso h2 {
-    font-size: 2rem;
-    margin: 2rem;
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    max-width: 90%;
+    margin-inline: auto;
   }
 
   .section-proceso .grid.grid-3 {
-    grid-template-columns: 1fr; /* columna */
-    gap: 0.5rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .section-proceso .process-card {
-    min-height: auto; /* mejor en mobile */
-    padding: 1.5rem;
+    min-height: auto;
+    padding: 1.5rem 1.25rem;
   }
 
   .section-proceso .process-icon svg {
