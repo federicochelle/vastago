@@ -3,6 +3,10 @@
    ========================= */
 
 .navbar {
+  /* ✅ variables para unificar fondo */
+  --nav-bg: rgba(255, 255, 255, 0.75);
+  --nav-blur: blur(8px);
+
   position: fixed;
   top: 0;
   left: 0;
@@ -29,16 +33,30 @@
     align-items: center; /* ✅ corrige hamburguesa abajo */
     justify-content: space-between;
     gap: 1rem;
-    padding: 1rem 0;
+
+    padding: 1rem; /* desktop */
   }
 
-  /* =========================
-     BRAND
-     ========================= */
   .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+
+    text-decoration: none;
+    color: currentColor; // hereda blanco / oscuro según estado
+  }
+
+  /* Logo SVG */
+  .navbar-logo {
+    height: 40px; /* desktop */
+    width: auto;
+    display: block;
+  }
+
+  /* Texto marca */
+  .navbar-brand-text {
     font-weight: 600;
     font-size: 1.1rem;
-    color: currentColor; /* hereda blanco / oscuro */
   }
 
   /* =========================
@@ -69,15 +87,16 @@
     border: none;
     font-size: 1.6rem;
     cursor: pointer;
-    color: currentColor; /* 🔥 clave */
+    color: currentColor;
+    padding: 0; /* desktop */
   }
 
   /* =========================
      ESTADO SCROLL (glass)
      ========================= */
   &.navbar--scrolled {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(8px);
+    background: var(--nav-bg);
+    backdrop-filter: var(--nav-blur);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 
     color: #1e293b; /* cambia TODO */
@@ -89,17 +108,23 @@
   @media (max-width: 768px) {
     .navbar-toggle {
       display: block;
+      padding: 0.5rem; /* ✅ respiración */
     }
-    .navbar {
-      padding-inline: 1.25rem;
+
+    /* ✅ el padding va en el contenido, no en .navbar .navbar */
+    .navbar-content {
+      padding: 1rem 1.25rem; /* ✅ respiración lateral */
     }
 
     .navbar-brand {
       font-size: 1.1rem;
     }
+    .navbar-logo {
+      height: 40px;
+    }
 
-    .navbar-toggle {
-      padding: 0.5rem; // evita que quede pegado
+    .navbar-brand-text {
+      font-size: 1rem;
     }
     .navbar-nav {
       position: absolute;
@@ -107,8 +132,9 @@
       left: 0;
       width: 100%;
 
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
+      /* ✅ MISMO fondo que la navbar para que no cambie el color */
+      background: var(--nav-bg);
+      backdrop-filter: var(--nav-blur);
 
       flex-direction: column;
       align-items: center;
@@ -130,8 +156,14 @@
       }
     }
 
-    /* menú abierto */
+    /* ✅ menú abierto */
     &.navbar--open {
+      /* ✅ cuando abro, la barra también se vuelve glass aunque esté arriba del hero */
+      background: var(--nav-bg);
+      backdrop-filter: var(--nav-blur);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      color: #1e293b;
+
       .navbar-nav {
         opacity: 1;
         pointer-events: auto;

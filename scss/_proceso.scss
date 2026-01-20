@@ -3,23 +3,24 @@
    ========================= */
 
 .section-proceso {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 4rem 0;
+  width: 100%;
+  padding: 6rem 0; /* presencia sin forzar vh */
 }
 
-/* Contenido interno (clave para control) */
+/* Contenido interno */
 .section-proceso .container {
   width: 100%;
 }
 
-/* Título */
+/* Título (coherente con Servicios) */
 .section-proceso h2 {
-  font-size: 3rem;
-  margin-bottom: 3rem;
+  margin: 0 0 3rem;
   text-align: center;
-  letter-spacing: 0.05em;
+
+  font-size: clamp(2.2rem, 3.2vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: 0.01em; /* antes 0.05em era demasiado */
 }
 
 /* Grid desktop */
@@ -27,9 +28,10 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  align-items: stretch;
 }
 
-/* Card */
+/* Card (solo estructura) */
 .section-proceso .process-card {
   text-align: center;
 
@@ -49,11 +51,12 @@
   height: 90px;
   color: #2f4f3a;
 }
+
 /* =========================
-   ANIMACIÓN PROCESO
+   ANIMACIÓN PROCESO (encapsulada)
    ========================= */
 
-.process-card {
+.section-proceso .process-card {
   opacity: 0;
   transform: translateY(30px);
   transition:
@@ -61,8 +64,7 @@
     transform 0.6s ease;
 }
 
-/* cuando entra en viewport */
-.process-card.is-visible {
+.section-proceso .process-card.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -81,14 +83,12 @@
 }
 
 /* =========================
-   MOBILE FIX REAL
+   MOBILE FIX
    ========================= */
 
 @media (max-width: 768px) {
   .section-proceso {
-    min-height: auto; /* ❌ NO full height en mobile */
-    align-items: flex-start; /* ❌ NO centrar vertical */
-    padding: 5rem 0 3rem; /* aire debajo de navbar */
+    padding: 5rem 0 3rem; /* aire debajo de navbar fija */
   }
 
   .section-proceso h2 {

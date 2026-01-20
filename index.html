@@ -20,48 +20,59 @@
 
   <body>
     <!-- NAVBAR -->
-    <header class="navbar">
-      <div class="container navbar-content">
-        <div class="navbar-brand">VASTAGO</div>
+  <header class="navbar">
+  <div class="container navbar-content">
 
-        <nav class="navbar-nav">
-          <a href="#servicios">Servicios</a>
-          <a href="#proceso">Proceso</a>
-          <a href="#contacto">Contacto</a>
-        </nav>
+    <a href="#hero" class="navbar-brand">
+      <img
+        src="img/logo.svg"
+        alt="Vástago Paisaje"
+        class="navbar-logo"
+      />
+      <span class="navbar-brand-text">VÁSTAGO</span>
+    </a>
 
-        <button class="navbar-toggle" aria-label="Abrir menú">☰</button>
-      </div>
-    </header>
+    <nav class="navbar-nav">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <button class="navbar-toggle" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
 
     <main>
       <!-- HERO -->
-      <section class="hero">
-  <div class="hero-fade"></div>
+      <section class="hero" id="hero">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__overlay" aria-hidden="true"></div>
 
-  <div class="hero-content container animate-from-left">
-    <h2>
+  <div class="hero__container container">
+    <div class="hero__brand hero-intro">
+      
+
+    <h1 class="hero__title">
       DISEÑO<br />
-      ARMONIA<br />
+      ARMONÍA<br />
       NATURALEZA
-    </h2>
-  </div>
-</section>
-      <section id="servicios" class="section-servicios animate-from-right>
-  <div class="container">
+    </h1>
 
+   
+
+    </div>
+</section>
+      <section id="servicios" class="section-servicios animate-from-right">
+  <div class="container">
     <!-- Header de sección -->
     <div class="section-header">
-      <span class="section-eyebrow">SERVICIOS</span>
-      <h2 class="section-title">
-       NUESTRAS SOLUCIONES PARA TU ESPACIO
-      </h2>
+      <h2 class="section-title">Soluciones para tu espacio</h2>
     </div>
 
     <!-- Cards -->
     <div class="grid grid-3">
       <div class="card">
-        <img src="img/casa.png" alt="" />
+        <img src="img/casa.png" alt="Diseño de jardín urbano" />
         <h3>DISEÑO</h3>
         <p class="text-muted">
           Diseñamos espacios verdes que dialogan con la arquitectura, el entorno y la forma de habitar cada lugar.
@@ -69,120 +80,145 @@
       </div>
 
       <div class="card">
-        <img src="img/oficina.png" alt="" />
-        <h3>SELECCION</h3>
+        <img src="img/oficina.png" alt="Selección de plantas para interior" />
+        <h3>SELECCIÓN</h3>
         <p class="text-muted">
-          Elegimos especies segun luz, clima y uso del espacio, priorizando equilibrio, resistencia y bajo mantenimiento.
-        </p>
-      </div>
-
-      <!-- Card extra (placeholder) -->
-      <div class="card">
-        <img src="img/azotea.png" alt="" />
-        <h3>INTEGRACION </h3>
-        <p class="text-muted">
-          Integramos vegetacion en proyectos arquitectonicos para mejorar la experiencia, el confort y la identidad del espacio.
+          Elegimos especies según luz, clima y uso del espacio, priorizando equilibrio, resistencia y bajo mantenimiento.
         </p>
       </div>
 
       <div class="card">
-        <img src="img/mantenimiento.png" alt="" />
-        <h3>MANTENIMIENTO </h3>
+        <img src="img/azotea.png" alt="Integración de vegetación en arquitectura" />
+        <h3>INTEGRACIÓN</h3>
         <p class="text-muted">
-          Acompañamos el crecimiento del jardin con tareas de cuidado, poda, riego y seguimiento estacional.
+          Integramos vegetación en proyectos arquitectónicos para mejorar la experiencia, el confort y la identidad del espacio.
+        </p>
+      </div>
+
+      <div class="card">
+        <img src="img/mantenimiento.png" alt="Mantenimiento de jardines" />
+        <h3>MANTENIMIENTO</h3>
+        <p class="text-muted">
+          Acompañamos el crecimiento del jardín con tareas de cuidado, poda, riego y seguimiento estacional.
         </p>
       </div>
     </div>
-
   </div>
 </section>
 
 
-      <!-- PROCESO / INFO -->
-      <section id="proceso" class="section section-proceso">
-        <div class="container">
-          <h2 class="text-center">NUESTRO PROCESO</h2>
-<div class="grid grid-3">
-            <!-- Card 1 -->
-            <div class="process-card">
-              <div class="process-icon" aria-hidden="true">
-                <!-- Visita / evaluación -->
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M12 22s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  />
-                  <path
-                    d="M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  />
-                </svg>
-              </div>
-              <h3>Visita y evaluación</h3>
-              <p class="text-muted">
-                Analizamos el espacio, la luz, el uso y las necesidades.
-              </p>
-            </div>
+    <!-- PROCESO / INFO -->
+<section id="proceso" class="section section-proceso">
+  <div class="container">
+    <h2 class="text-center">Nuestro proceso</h2>
 
-            <!-- Card 2 -->
-            <div class="process-card">
-              <div class="process-icon" aria-hidden="true">
-                <!-- Diseño / presupuesto -->
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M7 3h7l3 3v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  />
-                  <path d="M14 3v3h3" stroke="currentColor" stroke-width="2" />
-                  <path
-                    d="M8 11h8M8 15h8M8 19h5"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </div>
-              <h3>Diseño y presupuesto</h3>
-              <p class="text-muted">
-                Propuesta clara con materiales, tiempos y costos.
-              </p>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="process-card">
-              <div class="process-icon" aria-hidden="true">
-                <!-- Ejecución / seguimiento -->
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M20 6 9 17l-5-5"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M21 12a9 9 0 1 1-6-8.5"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </div>
-              <h3>Ejecución y seguimiento</h3>
-              <p class="text-muted">
-                Implementamos y acompañamos el mantenimiento inicial.
-              </p>
-            </div>
-            </div>
-          </div>
+    <div class="grid grid-3">
+      <!-- Card 1 -->
+      <div class="process-card">
+        <div class="process-icon" aria-hidden="true">
+          <!-- Visita / evaluación -->
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+              d="M12 22s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <path
+              d="M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+          </svg>
         </div>
-      </section>
+        <h3>Visita y evaluación</h3>
+        <p class="text-muted">
+          Analizamos el espacio, la luz, el uso y las necesidades.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="process-card">
+        <div class="process-icon" aria-hidden="true">
+          <!-- Diseño / presupuesto -->
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+              d="M7 3h7l3 3v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <path d="M14 3v3h3" stroke="currentColor" stroke-width="2" />
+            <path
+              d="M8 11h8M8 15h8M8 19h5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+        <h3>Diseño y presupuesto</h3>
+        <p class="text-muted">
+          Propuesta clara con materiales, tiempos y costos.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="process-card">
+        <div class="process-icon" aria-hidden="true">
+          <!-- Ejecución / seguimiento -->
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+              d="M20 6 9 17l-5-5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M21 12a9 9 0 1 1-6-8.5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+        <h3>Ejecución y seguimiento</h3>
+        <p class="text-muted">
+          Implementamos y acompañamos el mantenimiento inicial.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACUNDO / ABOUT -->
+<section id="facundo" class="section section-facundo">
+  <div class="container facundo-grid">
+    <!-- Foto -->
+    <div class="facundo-media">
+      <img src="img/facu.png" alt="Facundo Márquez, paisajista" />
+    </div>
+
+    <!-- Texto -->
+    <div class="facundo-content">
+      <span class="facundo-eyebrow">SOBRE FACUNDO</span>
+      <h2 class="facundo-title">Facundo Márquez</h2>
+
+      <p class="facundo-text">
+        Después de años trabajando en viveros y proyectos urbanos, Facundo decidió
+        enfocarse en crear espacios verdes que se vivan todos los días: terrazas,
+        patios, interiores y jardines que acompañan la arquitectura sin perder
+        naturalidad.
+      </p>
+
+      <p class="facundo-text facundo-text--muted">
+        Su enfoque prioriza especies adecuadas para cada luz y clima, diseño sobrio y
+        mantenimiento realista para que el espacio se sostenga en el tiempo.
+      </p>
+    </div>
+  </div>
+</section>
       <!-- CTA / CONTACTO -->
      <section id="contacto" class="section section-contacto">
-  <div class="section-fade-top"></div>
 
   <div class="container text-center">
     <h2>¿Tenés un espacio que <br>transformar?</h2>
@@ -217,8 +253,8 @@
 
     <div class="footer-contact">
       <p class="footer-title">Contacto</p>
-      <p class="text-muted">hola@vastagopaisaje.com</p>
-      <p class="text-muted">@vastago.paisaje</p>
+      <p class="text-muted"><a href="https://mail.google.com/" class="footer-link">hola@vastagopaisaje.com</a></p>
+      <p class="text-muted"><a href="https://www.instagram.com/vastago.paisaje?igsh=MXR6bWwzMWdwczZmdQ==" target="_blank" class="footer-link">@vastago.paisaje</a></p>
       <p class="text-muted">Montevideo, Uruguay</p>
     </div>
   </div>

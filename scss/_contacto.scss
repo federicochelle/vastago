@@ -1,94 +1,92 @@
+/* =========================
+   CTA / CONTACTO
+   ========================= */
+
 .section-contacto {
-  background-image: url(img/contact.png);
-  min-height: 110vh; // desktop
+  position: relative;
+  overflow: hidden;
+
   width: 100%;
-  background-size: cover;
-  background-position: center;
+  min-height: 110vh; /* desktop */
+  padding: 8rem 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.contacto-fade {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 30vh;
-  background: linear-gradient(
-    to bottom,
-    rgba(253, 243, 234, 0) 0%,
-    #fdf3ea 85%
-  );
-  z-index: 1;
-  pointer-events: none;
-}
-.section-contacto h2 {
-  font-size: 4rem;
-}
 
-.section-contacto .btn.btn-primary {
-  background-color: #2f4f3a; /* mismo verde que los íconos */
-  color: #ffffff;
-  border-color: #2f4f3a;
-  text-decoration: none;
-}
+  background-color: #fdf3ea;
+  background-image: url("../img/contact.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-.section-contacto .btn.btn-primary:hover {
-  background-color: #244030; /* verde un poco más oscuro */
-  border-color: #244030;
-}
+  /* Overlay para legibilidad */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
 
-.section-contacto {
-  position: relative;
-  background-color: #fdf3ea; // mismo fondo del body
-  padding: 8rem 0;
-  overflow: hidden;
-}
-
-.section-fade-top {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 140px;
-  z-index: 1;
-  pointer-events: none;
-
-  background: linear-gradient(
-    to bottom,
-    rgba(253, 243, 234, 1) 0%,
-    rgba(253, 243, 234, 0) 100%
-  );
-}
-
-.section-contacto .container {
-  position: relative;
-  z-index: 2;
-}
-/* CTA / CONTACTO - ajustes mobile */
-@media (max-width: 768px) {
-  .section-contacto {
-    min-height: 100vh; /* si querés que sea pantalla completa */
-    padding-block: 3rem; /* aire arriba/abajo */
-    background-position: center;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.72),
+      rgba(255, 255, 255, 0.55)
+    );
   }
 
-  .section-contacto h2 {
-    font-size: clamp(2rem, 7vw, 2.6rem);
+  /* El contenido arriba del overlay */
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  h2 {
+    /* ✅ MISMA LÓGICA que tus títulos fuertes */
+    font-weight: 800;
+    letter-spacing: 0.01em; /* si lo tenés en mayúsculas, esto es clave */
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
     line-height: 1.05;
-    margin-bottom: 1rem;
+    margin: 0 0 1.25rem;
   }
 
-  .section-contacto p {
-    font-size: 1rem;
+  .text-muted {
+    font-size: clamp(1rem, 1.6vw, 1.1rem);
     line-height: 1.6;
-    max-width: 32ch;
-    margin-inline: auto;
-    margin-bottom: 1.25rem;
+    margin: 0 0 1.75rem;
+    /* en contacto prefiero un muted legible */
+    color: rgba(30, 41, 59, 0.75);
   }
 
-  .section-contacto .btn {
-    padding: 0.9rem 1.2rem;
-    font-size: 1rem;
+  .btn.btn-primary {
+    background-color: #2f4f3a;
+    border-color: #2f4f3a;
+    color: #ffffff;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #244030;
+      border-color: #244030;
+    }
+  }
+
+  @media (max-width: 768px) {
+    min-height: 90svh; /* mejor que vh en mobile */
+    padding: 6rem 0 5rem;
+
+    background-position: left bottom;
+
+    h2 {
+      /* ✅ para que no explote en mobile */
+      font-size: clamp(1.9rem, 8vw, 2.5rem);
+      line-height: 1.1;
+      letter-spacing: 0.005em;
+    }
+
+    .text-muted {
+      font-size: 1rem;
+      max-width: 30ch;
+      margin-inline: auto;
+    }
   }
 }

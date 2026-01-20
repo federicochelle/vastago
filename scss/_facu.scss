@@ -1,0 +1,94 @@
+/* =========================
+   FACUNDO (About)
+   ========================= */
+
+.section-facundo {
+  width: 100%;
+}
+
+.section-facundo .facundo-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr; /* foto un poquito más protagonista */
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Foto */
+.section-facundo .facundo-media {
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+}
+
+.section-facundo .facundo-media img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Texto */
+.section-facundo .facundo-eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  opacity: 0.75;
+  margin-bottom: 0.75rem;
+}
+
+.section-facundo .facundo-title {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2rem, 2.6vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.section-facundo .facundo-text {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 60ch;
+}
+
+.section-facundo .facundo-text--muted {
+  opacity: 0.78;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .section-facundo {
+    padding: 4rem 0;
+  }
+
+  .section-facundo .facundo-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .section-facundo .facundo-media img {
+    height: 360px;
+  }
+
+  .section-facundo .facundo-title {
+    font-size: 2rem;
+  }
+}
+
+.section-facundo {
+  padding-block: 3.5rem; // probá 3rem–4rem
+}
+
+@media (min-width: 769px) {
+  .section-facundo {
+    padding-block: 3rem; // desktop más compacto
+  }
+
+  .section-facundo h2,
+  .section-facundo .section-title {
+    margin-bottom: 1.5rem; // antes capaz 3rem
+  }
+
+  .section-facundo p {
+    margin-bottom: 0; // evita “aire” extra si hay varios <p>
+  }
+}

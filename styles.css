@@ -16,6 +16,9 @@
    NAVBAR – transparente → glass
    ========================= */
 .navbar {
+  /* ✅ variables para unificar fondo */
+  --nav-bg: rgba(255, 255, 255, 0.75);
+  --nav-blur: blur(8px);
   position: fixed;
   top: 0;
   left: 0;
@@ -35,17 +38,29 @@
   align-items: center; /* ✅ corrige hamburguesa abajo */
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem 0;
-}
-.navbar {
-  /* =========================
-     BRAND
-     ========================= */
+  padding: 1rem; /* desktop */
 }
 .navbar .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: currentColor;
+}
+.navbar {
+  /* Logo SVG */
+}
+.navbar .navbar-logo {
+  height: 40px; /* desktop */
+  width: auto;
+  display: block;
+}
+.navbar {
+  /* Texto marca */
+}
+.navbar .navbar-brand-text {
   font-weight: 600;
   font-size: 1.1rem;
-  color: currentColor; /* hereda blanco / oscuro */
 }
 .navbar {
   /* =========================
@@ -76,7 +91,8 @@
   border: none;
   font-size: 1.6rem;
   cursor: pointer;
-  color: currentColor; /* 🔥 clave */
+  color: currentColor;
+  padding: 0; /* desktop */
 }
 .navbar {
   /* =========================
@@ -84,8 +100,8 @@
      ========================= */
 }
 .navbar.navbar--scrolled {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(8px);
+  background: var(--nav-bg);
+  backdrop-filter: var(--nav-blur);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   color: #1e293b; /* cambia TODO */
 }
@@ -97,23 +113,31 @@
 @media (max-width: 768px) {
   .navbar .navbar-toggle {
     display: block;
+    padding: 0.5rem; /* ✅ respiración */
   }
-  .navbar .navbar {
-    padding-inline: 1.25rem;
+  .navbar {
+    /* ✅ el padding va en el contenido, no en .navbar .navbar */
+  }
+  .navbar .navbar-content {
+    padding: 1rem 1.25rem; /* ✅ respiración lateral */
   }
   .navbar .navbar-brand {
     font-size: 1.1rem;
   }
-  .navbar .navbar-toggle {
-    padding: 0.5rem;
+  .navbar .navbar-logo {
+    height: 40px;
+  }
+  .navbar .navbar-brand-text {
+    font-size: 1rem;
   }
   .navbar .navbar-nav {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
+    /* ✅ MISMO fondo que la navbar para que no cambie el color */
+    background: var(--nav-bg);
+    backdrop-filter: var(--nav-blur);
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
@@ -128,7 +152,14 @@
     font-size: 1.2rem;
   }
   .navbar {
-    /* menú abierto */
+    /* ✅ menú abierto */
+  }
+  .navbar.navbar--open {
+    /* ✅ cuando abro, la barra también se vuelve glass aunque esté arriba del hero */
+    background: var(--nav-bg);
+    backdrop-filter: var(--nav-blur);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    color: #1e293b;
   }
   .navbar.navbar--open .navbar-nav {
     opacity: 1;
@@ -139,175 +170,173 @@
 
 .hero {
   position: relative;
-  min-height: 100vh;
-  width: 100%;
-  background-image: url("img/plantas.png");
+  min-height: 100svh;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+/* Imagen de fondo */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("../img/plantas.png");
   background-size: cover;
   background-position: center;
-  color: white;
-  display: flex;
-  align-items: flex-end;
-  background-repeat: no-repeat;
+  transform: scale(1.02);
 }
 
-/*.hero-fade {
+/* Overlay para legibilidad */
+.hero__overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 30vh;
-  background: linear-gradient(
-    to bottom,
-    rgba(253, 243, 234, 0) 0%,
-    #fdf3ea 85%
-  );
-  z-index: 1;
-  pointer-events: none;
+  inset: 0;
+  background: radial-gradient(1200px 600px at 20% 10%, rgba(0, 0, 0, 0.12), transparent 55%), linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.55));
 }
-*/
-.hero-content {
+
+/* Contenido */
+.hero__container {
   position: relative;
-  padding-bottom: 4rem;
-  z-index: 2;
-}
-
-.hero h2 {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: clamp(3.6rem, 5vw, 4rem);
-  line-height: 1.1;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-family: "Inter", sans-serif;
-  font-size: 1.125rem;
-  max-width: 420px;
-  opacity: 0.9;
-}
-
-.section-servicios .section-header {
-  max-width: 769px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
-
-.section-servicios .section-title {
-  padding-top: 2rem;
-  font-size: 2rem;
-}
-
-/* ✅ MOBILE: título en 1 línea */
-@media (max-width: 768px) {
-  .section-servicios .section-title {
-    font-size: 1.35rem;
-    line-height: 1.1;
-  }
-  .section-servicios .section-header {
-    margin-bottom: 1.5rem;
-  }
-}
-/* ✅ DESKTOP: header centrado, título grande, span a la izquierda */
-@media (min-width: 769px) {
-  .section-servicios .section-header {
-    max-width: 1100px;
-    margin-top: 2rem;
-    text-align: center;
-    position: relative; /* para ubicar el span */
-  }
-  .section-servicios .section-title {
-    font-size: clamp(2.6rem, 3.2vw, 3.4rem);
-    line-height: 1.08;
-  }
-  /* ✅ Span a la izquierda */
-  .section-servicios .section-eyebrow {
-    position: absolute;
-    left: 0;
-    top: 0;
-    text-align: left;
-  }
-}
-/* =========================
-   GRID / CARDS
-   ========================= */
-/* ✅ Desktop: 4 columnas */
-.section-servicios .grid.grid-3 {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: stretch;
-}
-
-/* ✅ Tablet: 2 columnas */
-@media (max-width: 1024px) {
-  .section-servicios .grid.grid-3 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-/* Card */
-.section-servicios .card {
+  z-index: 1;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  padding: 0;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  /* ✅ más alta en todos lados */
-  min-height: clamp(32rem, 38vw, 44rem);
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  transition: transform 180ms ease, box-shadow 180ms ease;
-}
-
-/* ✅ Imagen MUCHO más alta */
-.section-servicios .card img {
-  width: 100%;
-  aspect-ratio: 3/4; /* más vertical */
-  object-fit: cover;
-  display: block;
-  border-radius: 0;
-}
-
-/* Padding del texto */
-.section-servicios .card h3,
-.section-servicios .card p {
+  justify-content: flex-end;
+  padding-top: calc(72px + env(safe-area-inset-top));
+  padding-bottom: calc(96px + env(safe-area-inset-bottom));
   padding-inline: 1.25rem;
 }
 
-.section-servicios .card h3 {
-  margin: 0.9rem 0 0;
-}
-
-.section-servicios .card p {
+/* Título */
+.hero__title {
   margin: 0;
-  padding-bottom: 1.25rem;
-  margin-top: auto;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+  font-size: clamp(2.4rem, 8vw, 3.6rem);
+  text-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
-/* Hover */
-.section-servicios .card:hover {
-  transform: translateY(-4px);
+/* Bajada */
+.hero__subtitle {
+  margin-top: 0.85rem;
+  max-width: 32ch;
+  font-size: 1rem;
+  line-height: 1.55;
+  opacity: 0.92;
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+  .hero__container {
+    justify-content: flex-end;
+    max-width: 1100px;
+    padding-inline: 2rem;
+  }
+  .hero__title {
+    font-size: clamp(3.4rem, 5vw, 4.8rem);
+    line-height: 0.95;
+  }
+}
+/* =========================
+   SERVICIOS
+   ========================= */
+.section-servicios {
+  width: 100%;
+  padding-block: 6rem; /* impacto sin forzar 100vh */
 }
 
 /* =========================
-   MOBILE: carrusel swipe
+   HEADER
+   ========================= */
+.section-servicios .section-header {
+  max-width: 900px;
+  margin-bottom: 4rem;
+}
+
+.section-servicios .section-title {
+  font-size: clamp(2.4rem, 3.5vw, 3.2rem);
+  font-weight: 800; /* fuerza tipo hero */
+  line-height: 1.05;
+  margin: 0;
+}
+
+/* =========================
+   GRID – DESKTOP
+   ========================= */
+.section-servicios .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2x2 */
+  gap: 2.5rem;
+  align-items: stretch;
+}
+
+/* =========================
+   CARD
+   ========================= */
+.section-servicios .card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Imagen protagonista */
+.section-servicios .card img {
+  width: 100%;
+  height: 320px; /* imagen grande */
+  object-fit: cover;
+  display: block;
+}
+
+/* Texto */
+.section-servicios .card h3 {
+  margin: 1.25rem 1.25rem 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.section-servicios .card p {
+  margin: 0.75rem 1.25rem 1.5rem;
+  line-height: 1.6;
+}
+
+/* Hover solo desktop */
+@media (hover: hover) {
+  .section-servicios .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
+  }
+}
+/* =========================
+   MOBILE
    ========================= */
 @media (max-width: 768px) {
-  .section-servicios .grid.grid-3 {
-    display: flex !important;
-    gap: 1rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-inline: 1rem;
-    padding-bottom: 0.5rem;
-    scrollbar-width: none;
+  .section-servicios {
+    padding-block: 4rem;
   }
-  .section-servicios .grid.grid-3::-webkit-scrollbar {
-    display: none;
+  .section-servicios .section-header {
+    margin-bottom: 3rem;
   }
-  .section-servicios .grid.grid-3 > .card {
-    flex: 0 0 85%;
-    scroll-snap-align: start;
+  .section-servicios .section-title {
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+  /* Columna */
+  .section-servicios .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  /* Card más liviana */
+  .section-servicios .card {
+    box-shadow: none; /* sin sombra en mobile */
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .section-servicios .card img {
+    height: 260px; /* un poco más baja */
   }
 }
 /* =========================
@@ -374,6 +403,14 @@
   text-align: center;
 }
 
+.footer-link {
+  color: inherit;
+  text-decoration: none;
+}
+.footer-link:hoover {
+  opacity: 0.85;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .footer.footer--minimal {
@@ -401,112 +438,105 @@ h3 {
   font-weight: 500;
 }
 
+/* =========================
+   CTA / CONTACTO
+   ========================= */
 .section-contacto {
-  background-image: url(img/contact.png);
-  min-height: 110vh;
+  position: relative;
+  overflow: hidden;
   width: 100%;
-  background-size: cover;
-  background-position: center;
+  min-height: 110vh; /* desktop */
+  padding: 8rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.contacto-fade {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 30vh;
-  background: linear-gradient(to bottom, rgba(253, 243, 234, 0) 0%, #fdf3ea 85%);
-  z-index: 1;
-  pointer-events: none;
-}
-
-.section-contacto h2 {
-  font-size: 4rem;
-}
-
-.section-contacto .btn.btn-primary {
-  background-color: #2f4f3a; /* mismo verde que los íconos */
-  color: #ffffff;
-  border-color: #2f4f3a;
-  text-decoration: none;
-}
-
-.section-contacto .btn.btn-primary:hover {
-  background-color: #244030; /* verde un poco más oscuro */
-  border-color: #244030;
-}
-
-.section-contacto {
-  position: relative;
   background-color: #fdf3ea;
-  padding: 8rem 0;
-  overflow: hidden;
+  background-image: url("../img/contact.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Overlay para legibilidad */
 }
-
-.section-fade-top {
+.section-contacto::before {
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 140px;
-  z-index: 1;
+  inset: 0;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgb(253, 243, 234) 0%, rgba(253, 243, 234, 0) 100%);
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.55));
 }
-
+.section-contacto {
+  /* El contenido arriba del overlay */
+}
 .section-contacto .container {
   position: relative;
   z-index: 2;
 }
-
-/* CTA / CONTACTO - ajustes mobile */
+.section-contacto h2 {
+  /* ✅ MISMA LÓGICA que tus títulos fuertes */
+  font-weight: 800;
+  letter-spacing: 0.01em; /* si lo tenés en mayúsculas, esto es clave */
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  line-height: 1.05;
+  margin: 0 0 1.25rem;
+}
+.section-contacto .text-muted {
+  font-size: clamp(1rem, 1.6vw, 1.1rem);
+  line-height: 1.6;
+  margin: 0 0 1.75rem;
+  /* en contacto prefiero un muted legible */
+  color: rgba(30, 41, 59, 0.75);
+}
+.section-contacto .btn.btn-primary {
+  background-color: #2f4f3a;
+  border-color: #2f4f3a;
+  color: #ffffff;
+  text-decoration: none;
+}
+.section-contacto .btn.btn-primary:hover {
+  background-color: #244030;
+  border-color: #244030;
+}
 @media (max-width: 768px) {
   .section-contacto {
-    min-height: 100vh; /* si querés que sea pantalla completa */
-    padding-block: 3rem; /* aire arriba/abajo */
-    background-position: center;
+    min-height: 90svh; /* mejor que vh en mobile */
+    padding: 6rem 0 5rem;
+    background-position: left bottom;
   }
   .section-contacto h2 {
-    font-size: clamp(2rem, 7vw, 2.6rem);
-    line-height: 1.05;
-    margin-bottom: 1rem;
+    /* ✅ para que no explote en mobile */
+    font-size: clamp(1.9rem, 8vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: 0.005em;
   }
-  .section-contacto p {
+  .section-contacto .text-muted {
     font-size: 1rem;
-    line-height: 1.6;
-    max-width: 32ch;
+    max-width: 30ch;
     margin-inline: auto;
-    margin-bottom: 1.25rem;
-  }
-  .section-contacto .btn {
-    padding: 0.9rem 1.2rem;
-    font-size: 1rem;
   }
 }
+
 /* =========================
    PROCESO
    ========================= */
 .section-proceso {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 4rem 0;
+  width: 100%;
+  padding: 6rem 0; /* presencia sin forzar vh */
 }
 
-/* Contenido interno (clave para control) */
+/* Contenido interno */
 .section-proceso .container {
   width: 100%;
 }
 
-/* Título */
+/* Título (coherente con Servicios) */
 .section-proceso h2 {
-  font-size: 3rem;
-  margin-bottom: 3rem;
+  margin: 0 0 3rem;
   text-align: center;
-  letter-spacing: 0.05em;
+  font-size: clamp(2.2rem, 3.2vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: 0.01em; /* antes 0.05em era demasiado */
 }
 
 /* Grid desktop */
@@ -514,9 +544,10 @@ h3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  align-items: stretch;
 }
 
-/* Card */
+/* Card (solo estructura) */
 .section-proceso .process-card {
   text-align: center;
   display: flex;
@@ -535,16 +566,15 @@ h3 {
 }
 
 /* =========================
-   ANIMACIÓN PROCESO
+   ANIMACIÓN PROCESO (encapsulada)
    ========================= */
-.process-card {
+.section-proceso .process-card {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-/* cuando entra en viewport */
-.process-card.is-visible {
+.section-proceso .process-card.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -563,13 +593,11 @@ h3 {
 }
 
 /* =========================
-   MOBILE FIX REAL
+   MOBILE FIX
    ========================= */
 @media (max-width: 768px) {
   .section-proceso {
-    min-height: auto; /* ❌ NO full height en mobile */
-    align-items: flex-start; /* ❌ NO centrar vertical */
-    padding: 5rem 0 3rem; /* aire debajo de navbar */
+    padding: 5rem 0 3rem; /* aire debajo de navbar fija */
   }
   .section-proceso h2 {
     font-size: clamp(1.6rem, 7vw, 2.2rem);
@@ -638,6 +666,93 @@ h3 {
   }
   .wa-float__text {
     display: none;
+  }
+}
+/* =========================
+   FACUNDO (About)
+   ========================= */
+.section-facundo {
+  width: 100%;
+}
+
+.section-facundo .facundo-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr; /* foto un poquito más protagonista */
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Foto */
+.section-facundo .facundo-media {
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+}
+
+.section-facundo .facundo-media img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Texto */
+.section-facundo .facundo-eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  opacity: 0.75;
+  margin-bottom: 0.75rem;
+}
+
+.section-facundo .facundo-title {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2rem, 2.6vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.section-facundo .facundo-text {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 60ch;
+}
+
+.section-facundo .facundo-text--muted {
+  opacity: 0.78;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .section-facundo {
+    padding: 4rem 0;
+  }
+  .section-facundo .facundo-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  .section-facundo .facundo-media img {
+    height: 360px;
+  }
+  .section-facundo .facundo-title {
+    font-size: 2rem;
+  }
+}
+.section-facundo {
+  padding-block: 3.5rem;
+}
+
+@media (min-width: 769px) {
+  .section-facundo {
+    padding-block: 3rem;
+  }
+  .section-facundo h2,
+  .section-facundo .section-title {
+    margin-bottom: 1.5rem;
+  }
+  .section-facundo p {
+    margin-bottom: 0;
   }
 }
 body {
